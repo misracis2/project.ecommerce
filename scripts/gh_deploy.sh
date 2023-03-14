@@ -1,6 +1,6 @@
 #!/bin/bash
-PROJECT_NAME="ecommerce"
-JAR_PATH="/home/ubuntu/ecommerce/build/libs/*.jar"
+PROJECT_NAME="app"
+JAR_PATH="/home/ubuntu/app/build/libs/*.jar"
 DEPLOY_PATH=/home/ubuntu/$PROJECT_NAME/
 DEPLOY_LOG_PATH="/home/ubuntu/$PROJECT_NAME/deploy.log"
 DEPLOY_ERR_LOG_PATH="/home/ubuntu/$PROJECT_NAME/deploy_err.log"
