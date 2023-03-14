@@ -2,8 +2,7 @@ name: CI-CD
 
 on:
   push:
-    branches:
-      - deploy
+    branches: [ deploy ]
 
 env:
   S3_BUCKET_NAME: ecommerce-codedeploy-bucket
