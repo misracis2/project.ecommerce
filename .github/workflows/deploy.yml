@@ -2,17 +2,24 @@ name: CI-CD
 
 on:
   push:
-    branches:
-      - deploy
+    branches: [ deploy ]
+  pull_request:
+    branches: [ main ]
 
 env:
   S3_BUCKET_NAME: ecommerce-codedeploy-bucket
-  CODE_DEPLOY_APPLOCATION_NAME: codedeploy-app
+  CODE_DEPLOY_APPLICATION_NAME: codedeploy-app
   CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: codedeploy-deployment-group
+  RESOURCE_PATH: ./src/main/resources/application.yml
+
+permissions:
+  contents: read
 
 jobs:
-  build:
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
       - name: Checkout
@@ -23,7 +30,15 @@ jobs:
         with:
           java-version: 11
 
-      - name: Grant execute permisiion for gradlew
+
+      - name: Set application.yml file
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: ${{ env.RESOURCE_PATH }}
+        env:
+          value: ${{ secrets.APPLICATION_YML }}
+
+      - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
         shell: bash
 
@@ -32,11 +47,11 @@ jobs:
         shell: bash
 
       - name: Make zip file
-        run: zip -r ./$GITHUB_SHA
+        run: zip -r ./$GITHUB_SHA .
         shell: bash
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentails@v1
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -48,9 +63,10 @@ jobs:
       - name: Code Deploy
         run: |
           aws deploy create-deployment \
-          --deployment-config-name CodeDeployDefault.AllAtoOnce \
-          --applocation-name ${{ CODE_DEPLOY_APPLOCATION_NAME }} \
-          --deployment-group-name ${{ CODE_DEPLOY_DEPLOYMENT_GROUP_NAME }} \
-          --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$GITHUB_SHA.zip
+            --application-name ${{ env.CODE_DEPLOY_APPLICATION_NAME }} \
+            --deployment-config-name CodeDeployDefault.AllAtOnce \
+            --deployment-group-name ${{ env.CODE_DEPLOY_DEPLOYMENT_GROUP_NAME }} \
+            --s3-location bucket=$S3_BUCKET_NAME,key=$GITHUB_SHA.zip,bundleType=zip
+
 
 
