@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    include: security
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show_sql: true
+    hibernate:
+      ddl-auto: update
+
+
+value: 'from local'
