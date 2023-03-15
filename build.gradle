@@ -40,3 +40,7 @@ plain.jar 파일은 dependencies를 포함하지 않기 때문에 실행 불가�
 jar {
     enabled = false
 }
+
+bootJar{
+    archiveFileName = 'app.jar'
+}

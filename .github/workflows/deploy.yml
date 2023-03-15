@@ -3,8 +3,6 @@ name: CI-CD
 on:
   push:
     branches: [ deploy ]
-  pull_request:
-    branches: [ main ]
 
 env:
   S3_BUCKET_NAME: ecommerce-codedeploy-bucket
