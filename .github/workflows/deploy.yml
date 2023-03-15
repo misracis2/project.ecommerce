@@ -10,7 +10,7 @@ env:
   S3_BUCKET_NAME: ecommerce-codedeploy-bucket
   CODE_DEPLOY_APPLICATION_NAME: codedeploy-app
   CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: codedeploy-deployment-group
-  RESOURCE_PATH: ./src/main/resources/application.yaml
+  RESOURCE_PATH: ./src/main/resources/application.yml
 
 permissions:
   contents: read
