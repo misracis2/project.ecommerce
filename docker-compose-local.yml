@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  ecommerce-project-redis:
+    container_name: ecommerce-project-redis
+    build:
+      dockerfile: Dockerfile
+      context: ./redis
+    image: misracis/ecommerce-project-redis
+    ports:
+      - "6379:6379"
+  ecommerce-project-database:
+    container_name: ecommerce-project-database
+    build:
+      dockerfile: Dockerfile
+      context: ./database
+    image: ecommerce-project-database
+    environment:
+      - POSTGRESQL_DATABASE=${SPRING_DATASOURCE_USERNAME}
+      - POSTGRESQL_ROOT_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+    volumes:
+      - ./database/config:/etc/postgresql/conf.d
+    ports:
+      - "5432:5432"
