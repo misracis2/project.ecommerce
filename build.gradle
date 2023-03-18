@@ -25,9 +25,9 @@ dependencies {
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-//    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-//    runtimeOnly 'com.mysql:mysql-connector-j'
+    runtimeOnly 'org.postgresql:postgresql'
 }
 
 tasks.named('test') {
@@ -39,4 +39,8 @@ plain.jar 파일은 dependencies를 포함하지 않기 때문에 실행 불가�
 */
 jar {
     enabled = false
+}
+
+bootJar{
+    archiveFileName = 'app.jar'
 }

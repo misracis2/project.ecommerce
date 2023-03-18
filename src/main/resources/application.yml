@@ -1,6 +1,12 @@
 spring:
   profiles:
-    include: security
+    active: local #default
+    group:
+      local:
+        - common
+        - security
+      dev:
+        - common
   datasource:
     driver-class-name: org.postgresql.Driver
   jpa:
