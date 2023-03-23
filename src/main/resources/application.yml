@@ -16,5 +16,7 @@ spring:
   redis:
     host: localhost
     port: 6379
+  session:
+    storage-type: redis
 
 value: 'from local'
