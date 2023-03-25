@@ -1,5 +1,7 @@
 package com.example.ecommerce.admin.controller;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -14,8 +16,9 @@ public class RedisController {
     @Autowired
     StringRedisTemplate redisTemplate;
 
+    @ApiOperation(value = "fruit")
     @PostMapping("/fruit")
-    public String setFruit(@RequestParam String name) {
+    public String setFruit(@RequestParam @ApiParam(value = "과일 이름") String name) {
         ValueOperations<String, String> ops = redisTemplate.opsForValue();
         ops.set("fruit", name);
 

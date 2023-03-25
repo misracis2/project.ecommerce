@@ -13,10 +13,16 @@ spring:
     show_sql: true
     hibernate:
       ddl-auto: update
+  cache:
+    type: redis
   redis:
     host: localhost
     port: 6379
   session:
     storage-type: redis
 
+#스웨거 경로 에러 해결을 위한 설정
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 value: 'from local'
