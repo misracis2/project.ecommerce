@@ -1,8 +1,11 @@
 package com.example.ecommerce.global.member.model;
 
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor
 public class Member {
 
     @Id
