@@ -22,8 +22,7 @@ public class SignUpController {
     @ApiOperation(value = "회원가입 API")
     @PostMapping("/signup")
     public MessageHandler signup(@RequestBody @ApiParam(value = "회원 정보") MemberDto.SignUpDto signUpDto) {
-        signUpService.signUp(signUpDto);
-        return new MessageHandler(SuccessMessage.SING_UP);
+        return signUpService.signUp(signUpDto);
     }
 
 
