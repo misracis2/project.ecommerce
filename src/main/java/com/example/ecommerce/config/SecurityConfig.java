@@ -1,9 +1,9 @@
 package com.example.ecommerce.config;
 
+import com.example.ecommerce.global.member.model.MemberRole;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -14,7 +14,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/**").permitAll();
+                .antMatchers("/customer/**").permitAll()
+                .antMatchers("/seller/**").hasRole(MemberRole.SELLER.toString())
+                ;
 
         return http.build();
     }

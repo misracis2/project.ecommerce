@@ -7,7 +7,7 @@ public enum MemberRole {
     ADMIN("ADMIN")
     ;
 
-    private String memberRole;
+    private final String memberRole;
 
     MemberRole(String memberRole) {
         this.memberRole = memberRole;

@@ -1,10 +1,11 @@
 package com.example.ecommerce.global.common;
 
-import com.example.ecommerce.global.exception.ExceptionMessage;
-
 public enum SuccessMessage {
 
-    SING_UP("회원가입을 완료했습니다.")
+    SING_UP("회원가입을 완료했습니다."),
+
+    //PRODUCT
+    REGISTER_PRODUCT("상품 등록을 완료했습니다.")
     ;
 
 

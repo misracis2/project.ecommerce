@@ -22,9 +22,6 @@ public class MemberDto {
             this.password = password;
         }
 
-        public Member dtoToEntity(SignUpDto signUpDto) {
-        return new Member(signUpDto);
-        }
     }
 
 }
