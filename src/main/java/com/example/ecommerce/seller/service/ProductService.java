@@ -24,7 +24,7 @@ public class ProductService {
     private final double platinumFeeRate = 0.25;
     public MessageHandler registerProduct(ProductDto.RegisterDto registerDto){
         Member seller = sellerRepository.findById(1L).orElseThrow(
-                ()-> new CustomException(ExceptionMessage.NOT_EXIST_id)
+                ()-> new CustomException(ExceptionMessage.NOT_EXIST_ID)
         );
         int commission = setCommission(seller, registerDto.getPrice());
         productRepository.save(new Product(registerDto.getTitle(),
