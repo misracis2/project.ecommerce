@@ -26,12 +26,12 @@ public class ProductService {
         Member seller = sellerRepository.findById(1L).orElseThrow(
                 ()-> new CustomException(ExceptionMessage.NOT_EXIST_id)
         );
-        int fee = setCommission(seller, registerDto.getPrice());
+        int commission = setCommission(seller, registerDto.getPrice());
         productRepository.save(new Product(registerDto.getTitle(),
                 registerDto.getContent(),
                 registerDto.getPrice(),
                 registerDto.getStock(),
-                fee));
+                commission));
         return new MessageHandler(SuccessMessage.REGISTER_PRODUCT);
     }
     public int setCommission(Member member, int price){

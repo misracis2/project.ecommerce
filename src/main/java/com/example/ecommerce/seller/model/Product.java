@@ -24,13 +24,13 @@ public class Product {
     private int stock;
 
     @Column(nullable = false)
-    private int fee;
+    private int commission;
 
-    public Product(String title, String content, int price, int stock, int fee) {
+    public Product(String title, String content, int price, int stock, int commission) {
         this.title = title;
         this.content = content;
         this.price = price;
         this.stock = stock;
-        this.fee = fee;
+        this.commission = commission;
     }
 }
