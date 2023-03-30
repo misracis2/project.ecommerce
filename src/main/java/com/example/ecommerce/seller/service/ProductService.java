@@ -35,9 +35,9 @@ public class ProductService {
         return new MessageHandler(SuccessMessage.REGISTER_PRODUCT);
     }
     public int setCommission(Member member, int price){
-        if(member.getGrade() == MemberGrade.SILVER){
+        if(member.getMemberGrade() == MemberGrade.SILVER){
             return (int) Math.round(price * silverFeeRate);
-        }else if(member.getGrade() == MemberGrade.GOLD){
+        }else if(member.getMemberGrade() == MemberGrade.GOLD){
             return (int) Math.round(price * goldFeeRate);
         }else{
             return (int) Math.round(price * platinumFeeRate);
