@@ -1,7 +1,6 @@
-package com.example.ecommerce.global.member;
+package com.example.ecommerce.global.member.controller;
 
 import com.example.ecommerce.global.common.MessageHandler;
-import com.example.ecommerce.global.common.SuccessMessage;
 import com.example.ecommerce.global.member.model.MemberDto;
 import com.example.ecommerce.global.member.service.SignUpService;
 import io.swagger.annotations.Api;
@@ -19,11 +18,16 @@ public class SignUpController {
 
     private final SignUpService signUpService;
 
-    @ApiOperation(value = "회원가입 API")
-    @PostMapping("/signup")
-    public MessageHandler signup(@RequestBody @ApiParam(value = "회원 정보") MemberDto.SignUpDto signUpDto) {
-        return signUpService.signUp(signUpDto);
+    @ApiOperation(value = "customer 회원가입 API")
+    @PostMapping("/signup/customer")
+    public MessageHandler customerSignup(@RequestBody @ApiParam(value = "customer 회원 정보") MemberDto.SignUpDto signUpDto) {
+        return signUpService.customerSignUp(signUpDto);
     }
 
+    @ApiOperation(value = "seller 회원가입 API")
+    @PostMapping("/signup/seller")
+    public MessageHandler sellerSignup(@RequestBody @ApiParam(value = "customer 회원 정보") MemberDto.SignUpDto signUpDto) {
+        return signUpService.sellerSignUp(signUpDto);
+    }
 
 }
