@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
-public class Customer implements Member{
+public class Customer extends Member{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,14 +33,7 @@ public class Customer implements Member{
         this.memberRole = signUpDto.getMemberRole();
     }
 
-    @Override
-    public MemberGrade getMemberGrade() {
-        return memberGrade;
-    }
 
-    public void setMemberGrade(MemberGrade memberGrade) {
-        this.memberGrade = memberGrade;
-    }
 
     public MemberGrade grade() {
         if (purchaseAmount < silverPurchase) {

@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
-public class Seller implements Member {
+public class Seller extends Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
