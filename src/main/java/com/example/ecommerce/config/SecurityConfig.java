@@ -12,8 +12,10 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
+        http.csrf().disable();
         http.authorizeRequests()
+                .antMatchers("/signup/**").permitAll()
+                .antMatchers("/grade/**").permitAll()
                 .antMatchers("/customer/**").permitAll()
                 .antMatchers("/seller/**").hasRole(MemberRole.SELLER.toString())
                 ;

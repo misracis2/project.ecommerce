@@ -7,7 +7,7 @@ import com.example.ecommerce.global.exception.ExceptionMessage;
 import com.example.ecommerce.global.member.model.Customer;
 import com.example.ecommerce.global.member.model.Seller;
 import com.example.ecommerce.global.member.repository.CustomerRepository;
-import com.example.ecommerce.global.member.model.MemberDto;
+import com.example.ecommerce.global.member.model.dto.MemberDto;
 import com.example.ecommerce.global.member.repository.SellerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
