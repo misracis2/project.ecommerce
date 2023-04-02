@@ -2,7 +2,7 @@ package com.example.ecommerce.global.member.service;
 
 import com.example.ecommerce.global.exception.CustomException;
 import com.example.ecommerce.global.exception.ExceptionMessage;
-import com.example.ecommerce.global.member.model.MemberDto;
+import com.example.ecommerce.global.member.model.dto.MemberDto;
 import com.example.ecommerce.global.member.model.MemberRole;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
