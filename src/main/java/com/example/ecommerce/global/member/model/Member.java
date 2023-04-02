@@ -27,6 +27,7 @@ public class Member {
     private MemberRole memberRole;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private MemberGrade memberGrade;
 
     public MemberGrade getMemberGrade() {

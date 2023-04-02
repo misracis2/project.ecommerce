@@ -1,7 +1,7 @@
 package com.example.ecommerce.global.member.model;
 
+import com.example.ecommerce.global.member.model.dto.MemberDto;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
 @Entity
@@ -23,14 +23,17 @@ public class Customer extends Member{
     private MemberRole memberRole;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private MemberGrade memberGrade;
 
-    private long purchaseAmount = 0L;
+    private long purchaseAmount;
 
     public Customer(MemberDto.SignUpDto signUpDto) {
         this.memberId = signUpDto.getMemberId();
         this.password = signUpDto.getPassword();
         this.memberRole = signUpDto.getMemberRole();
+        this.memberGrade = MemberGrade.SILVER;
+        this.purchaseAmount = 0L;
     }
 
 

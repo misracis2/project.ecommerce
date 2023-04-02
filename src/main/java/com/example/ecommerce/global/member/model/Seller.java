@@ -1,5 +1,6 @@
 package com.example.ecommerce.global.member.model;
 
+import com.example.ecommerce.global.member.model.dto.MemberDto;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -23,15 +24,18 @@ public class Seller extends Member {
     private MemberRole memberRole;
 
     @Column(nullable = false)
-    private MemberGrade memberGrade = MemberGrade.SILVER;
+    @Enumerated(EnumType.STRING)
+    private MemberGrade memberGrade;
     @Column
-    private long sales = 0L;
+    private long sales;
 
 
     public Seller(MemberDto.SignUpDto signUpDto) {
         this.memberId = signUpDto.getMemberId();
         this.password = signUpDto.getPassword();
         this.memberRole = signUpDto.getMemberRole();
+        this.memberGrade = MemberGrade.SILVER;
+        this.sales = 0L;
     }
 
     @Override
