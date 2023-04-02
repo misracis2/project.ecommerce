@@ -1,5 +1,6 @@
-package com.example.ecommerce.global.member.model;
+package com.example.ecommerce.global.member.model.dto;
 
+import com.example.ecommerce.global.member.model.MemberRole;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
