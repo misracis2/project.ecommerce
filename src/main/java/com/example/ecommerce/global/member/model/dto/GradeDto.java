@@ -1,23 +1,39 @@
 package com.example.ecommerce.global.member.model.dto;
 
 import com.example.ecommerce.global.member.model.Customer;
+import com.example.ecommerce.global.member.model.MemberGrade;
+import com.example.ecommerce.global.member.model.MemberRole;
 import com.example.ecommerce.global.member.model.Seller;
 import lombok.Getter;
+import lombok.Setter;
 
-import java.util.List;
-
+@Getter
 public class GradeDto {
 
     @Getter
-    public static class responseDto{
+    @Setter
+    public static class ResponseDto {
 
-        List<Customer> customerList;
 
-        List<Seller> sellerList;
+        private Long id;
 
-        public responseDto(List<Customer> customerList, List<Seller> sellerList) {
-            this.customerList = customerList;
-            this.sellerList = sellerList;
+        private String memberId;
+
+        private MemberRole memberRole;
+
+        private MemberGrade memberGrade;
+
+        public ResponseDto(Customer member) {
+            this.id = member.getId();
+            this.memberId = member.getMemberId();
+            this.memberRole = member.getMemberRole();
+            this.memberGrade = member.getMemberGrade();
+        }
+        public ResponseDto(Seller member) {
+            this.id = member.getId();
+            this.memberId = member.getMemberId();
+            this.memberRole = member.getMemberRole();
+            this.memberGrade = member.getMemberGrade();
         }
     }
 }
