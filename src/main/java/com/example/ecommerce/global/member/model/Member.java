@@ -1,34 +1,28 @@
 package com.example.ecommerce.global.member.model;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 
-public class Member {
+@MappedSuperclass
+@Getter
+public abstract class Member {
 
-    //SELLER 회원 매출 등급
-    final long silverSales = 10000000;
-    final long goldSales = 100000000;
-
-    //CUSTOMER 회원 구매 등급
-    final long silverPurchase = 200000;
-    final long goldPurchase = 500000;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false, unique = true)
-    private String memberId;
-
-    @Column(nullable = false)
-    private String password;
+//    //SELLER 회원 매출 등급
+//    final long silverSales = 10000000;
+//    final long goldSales = 100000000;
+//
+//    //CUSTOMER 회원 구매 등급
+//    final long silverPurchase = 200000;
+//    final long goldPurchase = 500000;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private MemberRole memberRole;
+    protected MemberRole memberRole;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private MemberGrade memberGrade;
+    protected MemberGrade memberGrade;
 
     public MemberGrade getMemberGrade() {
         return memberGrade;

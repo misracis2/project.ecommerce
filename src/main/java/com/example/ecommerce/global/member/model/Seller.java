@@ -1,12 +1,14 @@
 package com.example.ecommerce.global.member.model;
 
 import com.example.ecommerce.global.member.model.dto.MemberDto;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
+@Getter
 public class Seller extends Member {
 
     @Id
@@ -19,13 +21,13 @@ public class Seller extends Member {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private MemberRole memberRole;
-
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private MemberGrade memberGrade;
+//    @Column(nullable = false)
+//    @Enumerated(EnumType.STRING)
+//    private MemberRole memberRole;
+//
+//    @Column(nullable = false)
+//    @Enumerated(EnumType.STRING)
+//    private MemberGrade memberGrade;
     @Column
     private long sales;
 
@@ -43,18 +45,14 @@ public class Seller extends Member {
         return memberGrade;
     }
 
-    public void setMemberGrade(MemberGrade memberGrade) {
-        this.memberGrade = memberGrade;
-    }
-
-    public MemberGrade grade() {
-        if (sales < silverSales) {
-            return MemberGrade.SILVER;
-        } else if (sales < goldSales) {
-            return MemberGrade.GOLD;
-        } else {
-            return MemberGrade.PLATINUM;
-        }
-    }
+//    public MemberGrade grade() {
+//        if (sales < silverSales) {
+//            return MemberGrade.SILVER;
+//        } else if (sales < goldSales) {
+//            return MemberGrade.GOLD;
+//        } else {
+//            return MemberGrade.PLATINUM;
+//        }
+//    }
 
 }
